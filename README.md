@@ -1,14 +1,24 @@
 I love git
 ==========
 
-I just coded this for fun. It allows to create ASCII art with the "contributions" graph in your Github profile page.
+I just coded this for fun.
+It allows to create ASCII art with the "contributions" graph in your Github profile page.
 
 
 How to use
 ----------
 
-The project has two branches: *master* is the working one, so use it normally to add any contribution to the project. The branch *canvas* is intended to store the fake commits that will allow us to paint the ASCII art.
+The script *paint.bash* creates fake commits in the current project, so it will pollute your repo.
+You can think a number of ways to handle this, however I'll let that decision up to you. Some sugestions:
 
-By running the script *paint.bash*, the branch *canvas* will be deleted (both remote and local) and rebuilt with proper fake commits. For this to work you need to set *master* as the default branch for the project in your Github's repository settings. Once _painted_ the branch, you need to set *canvas* as the default branch in order to get their commits counted as Github's stats.
+ * You can create a different branch to paint fake commits
+ * You can create a tag for the state previous to fake commits
+ * You can use "git reset --hard" to clean up your repo
 
-There's still part of the process which is manual, so I hope to make further improvements.
+Please bear in mind some very important concerns:
+
+ * If you use a branch to paint the fake commits, you need to set Github's project default branch to that branch BEFORE you push your fake commits. Otherwise, Github won't count those commits in the stats graph.
+ * If you want to clean Github's graph before repainting, you should delete the repo from Github and create it again, in order to dismiss the fake commits in the stats graph.
+ * As long as fake commits only involve touching a fake file, they cannot create any conflict with the project's scripts, so you can rebase or delete fake commits to your taste.
+
+To change the painting art, you can edit the 'painting' var declaration in paint.bash. Bear in mind that it's an inverted map char.
