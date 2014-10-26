@@ -8,6 +8,8 @@ It allows to create ASCII art with the "contributions" graph in your Github prof
 How to use
 ----------
 
+My master branch is polluted with fake commits, so I provide the 'clean' branch to share with you a clean version of the project. You should checkout this branch as a starting point for your painting.
+
 The script *paint.bash* creates fake commits in the current project, so it will pollute your repo.
 You can think a number of ways to handle this, however I'll let that decision up to you. Some sugestions:
 
