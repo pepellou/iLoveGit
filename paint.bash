@@ -34,7 +34,7 @@ do
     fi
 done
 
-nextSun=$(date "+%s" -d Sun)
+nextSun=$(date -v 0w -v 0S -v 0M -v 0H "+%s")
 nextSun=$(expr $nextSun + 12 \* 3600 + 34 \* 60 + 56)
 inc=$(expr 24 \* 3600)
 
@@ -42,7 +42,7 @@ day=$(expr $nextSun - 7 \* 52 \* 24 \* 3600)
 
 for value in ${to_paint[@]}
 do
-    theDay=$(date --date @$day +%Y-%m-%dT%H:%M:%S)
+    theDay=$(date -j -f "%s" $day +%Y-%m-%dT%H:%M:%S)
     case $value in
         . )
             val=1 ;;
